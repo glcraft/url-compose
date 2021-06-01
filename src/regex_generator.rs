@@ -12,7 +12,7 @@ const PCHAR:&str = formatcp!("(?:{UNRESERVED}|{PCT_ENC}|{SUB_DELIMS}|[:@])");
 /// Complete Url regular expression
 pub const fn url_regex() -> &'static str {
     const PORT: &str = "[0-9]*";
-    formatcp!(r"^(?:({})://({})(?::({}))?@)?({})(?::({PORT}))?({})(\?{})?(#{})?$", scheme(), user(), password(), host(), path(), query(), fragment())
+    formatcp!(r"^(?:({})://(?:({})(?::({}))?@)?({})(?::({PORT}))?)?({})(\?{})?(#{})?$", scheme(), user(), password(), host(), path(), query(), fragment())
 }
 /// https://datatracker.ietf.org/doc/html/rfc3986#section-4.2
 #[allow(dead_code)]
@@ -22,7 +22,7 @@ const fn relative_ref() -> &'static str {
 }
 /// https://datatracker.ietf.org/doc/html/rfc3986#section-3.1
 const fn scheme() -> &'static str {
-    r"[a-zA-Z][a-zA-Z0-9+\-.]*"
+    r"[a-zA-Z][a-zA-Z0-9+\-._]*"
 }
 /// https://datatracker.ietf.org/doc/html/rfc3986#section-3.2
 #[allow(dead_code)]
