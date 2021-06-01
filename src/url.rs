@@ -275,3 +275,25 @@ impl<S> fmt::Display for Url<S>
         write!(f, "{}", self.full.as_ref())
     }
 }
+impl<S> AsRef<str> for Url<S>
+    where S: AsRef<str> 
+{
+    fn as_ref(&self) -> &str {
+        self.full()
+    }
+}
+impl<S> AsRef<[u8]> for Url<S>
+    where S: AsRef<str> 
+{
+    fn as_ref(&self) -> &[u8] {
+        self.full().as_ref()
+    }
+}
+impl<S> Deref for Url<S>
+    where S: AsRef<str> 
+{
+    type Target = str;
+    fn deref(&self) -> &str {
+        self.full()
+    }
+}
