@@ -243,6 +243,27 @@ impl<S> Url<S>
         }
         result
     }
+    /**
+    Split the host domains into a [`Vec`] of `&str`.
+
+    If the host isn't present in the url, the function returns a empty value.
+    
+    ## Example
+    ```
+    use url_compose::Url;
+
+    let url = Url::new("https://www.example.com/").unwrap();
+    assert_eq!(url.dispatch_domains(), ["www","example","com"]);
+    let url = Url::new("/").unwrap();
+    assert_eq!(url.dispatch_domains(), [] as [&str;0]);
+    ```
+    */
+    pub fn dispatch_domains(&self) -> Vec<&str> {
+        match self.host() {
+            Some(domains) => domains.split('.').collect(),
+            None => Vec::new(),
+        }
+    }
 }
 
 impl<S> From<Url<S>> for String 
