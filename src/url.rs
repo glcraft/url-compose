@@ -24,6 +24,14 @@ pub enum Query<'a> {
 impl<S> Url<S> 
     where S: AsRef<str>
 {
+    /**
+    Create a new Url instance.
+
+    Parse the url given in parameter and store it and ranges of several element present in the url into the instance.
+    If the url is well formed, it returns theUrl instance in an [`Ok`] value. An empty [`Err`] is returns otherwise (meaning parsing doesn't capture the url well)
+
+    **Note** : To parse the url, it uses a very long regular expression. As it works pretty well, it is planned to be improved.
+    */
     pub fn new(v: S) -> Result<Url<S>, &'static str> {
         lazy_static! {
             static ref URL_REGEX: Regex = {
@@ -159,7 +167,7 @@ impl<S> Url<S>
     /**
     Returns the path of the url.
 
-    Even if the path returns an [`Option`], it will never return [`None`], but can return Some("")
+    Even if the path returns an [`Option`], it will never return [`None`], but can return `Some("")`
     
     ## Example
     ```
