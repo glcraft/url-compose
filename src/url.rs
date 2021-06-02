@@ -4,6 +4,7 @@ use lazy_static::lazy_static;
 use regex::Regex;
 use crate::regex_generator;
 
+#[derive(Clone)]
 pub struct Url<S: AsRef<str>> {
     full: S,
     scheme: Option<Range<usize>>,
