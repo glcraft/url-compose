@@ -167,7 +167,9 @@ impl<S> Url<S>
     /**
     Returns the path of the url.
 
-    Even if the path returns an [`Option`], it will never return [`None`], but can return `Some("")`
+    Even if the path returns an [`Option`], it will never return [`None`], but can return [`Some("")`]
+    
+    [`Some("")`]: https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some
     
     ## Example
     ```
