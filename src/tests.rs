@@ -1,6 +1,6 @@
 use crate::Url;
 #[test]
-fn lksgj() {
+fn url_scheme() {
     let url = Url::new("https://a").unwrap();
     assert_eq!(url.scheme().unwrap(), "https");
 }
