@@ -4,17 +4,16 @@ Some utilities functions are also provided.
 # Motivation
 
 You can notice this crate is very similar to the [url crate]. That's right : 
-url-decompose almost do the same thing. 
+url-decompose almost does the same thing. 
 
 As I started to make this crate, I didn't know the existance of "url" so I went to 
 URI RFC to make my own implementation (using a regex). When I discover "url" crate, 
 I decided to keep on my crate for some reasons :
 
-### Url\<S\> can either own data or not
+### My Url\<S\> can either own the data
 
-`S` has to implement `AsRef<str>`, so Url can stock whatever type you want. 
-It can be String (so Url owns the string) or &str (so Url keeps a reference to 
-another String). 
+Url store the value/reference which its type implements `AsRef<str>`. So Url can store a String (so Url owns the string) or &str (so Url keeps a reference to 
+another String) or whatever implements `AsRef<str>`. 
 
 ### This crate is light
 
